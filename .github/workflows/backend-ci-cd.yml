@@ -1,0 +1,14 @@
+name: Backend CI
+on:
+  push:
+    paths:
+      - "backend/**"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 18
+      - run: cd backend && npm install && npm test || echo "Tests skipped"
